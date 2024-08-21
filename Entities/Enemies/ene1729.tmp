@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://6y7hdvnygqeu"]
+
+[ext_resource type="Script" path="res://Entities/Enemies/enemy_basic.gd" id="1_0j30v"]
+[ext_resource type="Texture2D" uid="uid://docua86hjwgfi" path="res://Entities/Enemies/assets/enemy.png" id="2_dlcy7"]
+[ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities/Components/Hitbox Component/hitbox_component.tscn" id="3_u33s3"]
+[ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities/Components/Health Component/health_component.tscn" id="4_7fsdd"]
+[ext_resource type="Script" path="res://StateMachine.gd" id="5_ixoc8"]
+[ext_resource type="PackedScene" uid="uid://c5jtjc3i381lj" path="res://navigation_component.tscn" id="6_7rf1t"]
+[ext_resource type="Script" path="res://Idle.gd" id="6_js5m2"]
+[ext_resource type="Script" path="res://FollowEntity.gd" id="7_5wy6a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qfd7"]
+radius = 11.4018
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfp1p"]
+radius = 22.561
+
+[node name="EnemyFollowIdle" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_0j30v")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dlcy7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8qfd7")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_u33s3")]
+collision_layer = 32
+collision_mask = 48
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+modulate = Color(1, 0.360784, 0.2, 1)
+shape = SubResource("CircleShape2D_nfp1p")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_7fsdd")]
+MAX_HEALTH = 1000
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("moving_entity", "initial_state")]
+script = ExtResource("5_ixoc8")
+moving_entity = NodePath("..")
+initial_state = NodePath("Follow")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("6_js5m2")
+time_wander_change_min = null
+time_wander_change_max = null
+clamp_distance = null
+bias_to_origin = null
+origin_bias_weight = null
+
+[node name="Follow" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_5wy6a")
+
+[node name="NavigationComponent" parent="StateMachine/Follow" instance=ExtResource("6_7rf1t")]
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

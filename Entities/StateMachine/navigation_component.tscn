@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5jtjc3i381lj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yx57a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ytlh6"]
+
+[node name="NavigationComponent" type="Node2D"]
+
+[node name="Aggro" type="Area2D" parent="."]
+
+[node name="AggroShape" type="CollisionShape2D" parent="Aggro"]
+shape = SubResource("CircleShape2D_yx57a")
+
+[node name="StopAggro" type="Area2D" parent="."]
+
+[node name="StopAggroShape" type="CollisionShape2D" parent="StopAggro"]
+shape = SubResource("CircleShape2D_ytlh6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

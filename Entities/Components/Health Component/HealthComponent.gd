@@ -1,3 +1,5 @@
+@icon("res://icons/health_component_icon.png")
+
 extends Node
 class_name HealthComponent
 

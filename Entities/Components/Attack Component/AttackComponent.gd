@@ -1,3 +1,5 @@
+@icon("res://icons/attack_component_icon.png")
+
 extends Node
 class_name Attack
 

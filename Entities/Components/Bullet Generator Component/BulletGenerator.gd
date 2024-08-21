@@ -1,3 +1,5 @@
+@icon("res://icons/bullet_generator_icon.png")
+
 extends Node2D
 class_name BulletGenerator
 
@@ -39,7 +41,7 @@ func _on_area_exited(area):
 
 func shoot_bullet(bullet_type : PackedScene) :
 	var bullet_instance = bullet_type.instantiate()
-	add_child(bullet_instance)
+	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = global_position
 	bullet_instance.initialization(nearest_enemy,global_position)
 	
