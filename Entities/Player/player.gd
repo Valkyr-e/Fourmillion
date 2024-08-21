@@ -1,9 +1,10 @@
 extends CharacterBody2D
+class_name Player
 
 const SPEED : float = 500.0
 
 func _ready() :
-	$Bullet.free()
+	pass
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO
@@ -21,10 +22,3 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
-
-
-func _on_hitbox_component_area_entered(area):
-	if area is HitboxComponent :
-		print("attack detected")
-		var attack = Attack.new()
-		area.launch_attack(attack)

@@ -1,15 +1,13 @@
 extends Node
 class_name Attack
 
-@export var BASIC_ATTACK_DAMAGE = 50
-var damage : int
+@export var DEFAULT_ATTACK_DAMAGE = 50 # damage par défaut si le damage n'est pas précisé
+var damage : int 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	damage = 0
+	pass 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 

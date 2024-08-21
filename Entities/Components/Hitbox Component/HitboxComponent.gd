@@ -2,23 +2,27 @@ extends Area2D
 class_name HitboxComponent
 
 @export var health_component : HealthComponent
+@export var attack_component : Attack
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 
-
-#func _on_body_entered(body):
-	#if body.collision_layer == 2 : #2 pour Enemy
-		#print(collision_layer,"SUS AU CRABES")
-
 func launch_attack(attack : Attack) :
 	if health_component :
-		health_component.on_hit(attack)
+		health_component.on_attack(attack)
 	
+
+func _on_area_entered(area):
+	if area is HitboxComponent :
+		#print("attack detected")
+		var attack : Attack
+		if attack_component :
+			attack = attack_component
+		else :
+			attack = Attack.new()
+		#attack.damage = on peut ajuster si on veut
+		area.launch_attack(attack)

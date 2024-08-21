@@ -11,7 +11,6 @@ var nearest_enemy : Enemy = null #ATTENTION plutôt character2D car sinon un enn
 var enemies : Array[CharacterBody2D]
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	#Initialise la taille de l'aire de détection
 	$CollisionShape2D.shape.radius = detection_radius
@@ -21,7 +20,6 @@ func _ready():
 	$ResetTimer.wait_time = RESET_TIME
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	pass
 

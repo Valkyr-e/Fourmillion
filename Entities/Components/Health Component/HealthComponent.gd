@@ -4,24 +4,31 @@ class_name HealthComponent
 @export var MAX_HEALTH = 100
 var health : float
 
-var alive : bool
+signal just_died
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	health = MAX_HEALTH
-	alive = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func on_hit(attack : Attack) :
-	var damage = attack.BASIC_ATTACK_DAMAGE
-	if attack.damage != 0 :
+func on_attack(attack : Attack) :
+	var damage = attack.DEFAULT_ATTACK_DAMAGE #dégât par défaut
+	if attack.damage :
 		damage = attack.damage
 	health -= damage
 	if health <= 0 :
-		print("deadge")
-		alive = false
-		get_parent().queue_free() #ATTENTION tue aussi le player...
+		#print("deadge")
+		just_died.emit()
+		
+func _on_just_died():
+	var parent = get_parent()
+	if parent is Enemy :
+		parent.queue_free() 
+	elif parent is Player :
+		print("GAME OVER BRO")
+		parent.queue_free() 
+
+
+

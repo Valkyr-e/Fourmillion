@@ -4,3 +4,5 @@
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_rwoog")
+
+[connection signal="just_died" from="." to="." method="_on_just_died"]

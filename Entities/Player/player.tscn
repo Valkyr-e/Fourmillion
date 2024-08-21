@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1llh5nmy0kqa"]
+[gd_scene load_steps=8 format=3 uid="uid://b1llh5nmy0kqa"]
 
 [ext_resource type="Texture2D" uid="uid://b14xhwestvdsj" path="res://Entities/Player/assets/personnage.png" id="1_h5c25"]
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_w8ot6"]
 [ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities/Components/Health Component/health_component.tscn" id="3_2drn1"]
 [ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities/Components/Hitbox Component/hitbox_component.tscn" id="4_fiy05"]
-[ext_resource type="PackedScene" uid="uid://pf5g0why7nwj" path="res://Entities/Components/Attack Component/attack_component.tscn" id="5_m5mdf"]
 [ext_resource type="PackedScene" uid="uid://degts5oj15lav" path="res://Entities/Components/Bullet Generator Component/bullet_generator.tscn" id="6_sctnf"]
-[ext_resource type="PackedScene" uid="uid://ys62evbyl4v4" path="res://Entities/Armoury/Bullets/bullet.tscn" id="7_aew3e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2crgh"]
 radius = 11.0
@@ -22,7 +20,6 @@ collision_mask = 10
 script = ExtResource("1_w8ot6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 28)
 shape = SubResource("CapsuleShape2D_2crgh")
 
@@ -34,6 +31,7 @@ texture = ExtResource("1_h5c25")
 MAX_HEALTH = 70
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_fiy05")]
+visible = false
 collision_layer = 16
 collision_mask = 34
 health_component = NodePath("../HealthComponent")
@@ -42,14 +40,9 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(0, 24)
 shape = SubResource("CapsuleShape2D_8lnw7")
 
-[node name="AttackComponent" parent="." instance=ExtResource("5_m5mdf")]
-
 [node name="BulletGenerator" parent="." instance=ExtResource("6_sctnf")]
 position = Vector2(-1, 21)
 collision_mask = 34
-
-[node name="Bullet" parent="." instance=ExtResource("7_aew3e")]
-position = Vector2(22, 33)
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]

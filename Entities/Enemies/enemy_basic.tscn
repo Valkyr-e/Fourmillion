@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr5kvvsn8nu1m"]
+[gd_scene load_steps=8 format=3 uid="uid://dr5kvvsn8nu1m"]
 
 [ext_resource type="Texture2D" uid="uid://docua86hjwgfi" path="res://Entities/Enemies/assets/enemy.png" id="1_3a0iv"]
 [ext_resource type="Script" path="res://Entities/Enemies/enemy_basic.gd" id="1_gorbn"]
 [ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities/Components/Hitbox Component/hitbox_component.tscn" id="3_2o7bk"]
 [ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities/Components/Health Component/health_component.tscn" id="3_trr2u"]
+[ext_resource type="PackedScene" uid="uid://pf5g0why7nwj" path="res://Entities/Components/Attack Component/attack_component.tscn" id="5_nh7b1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qfd7"]
 radius = 11.4018
@@ -35,5 +36,7 @@ shape = SubResource("CircleShape2D_nfp1p")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_trr2u")]
 MAX_HEALTH = 90
+
+[node name="AttackComponent" parent="." instance=ExtResource("5_nh7b1")]
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
