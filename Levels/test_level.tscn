@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://biby71crms1hv"]
+
+[ext_resource type="Script" path="res://Levels/Level.gd" id="1_2yp7o"]
+[ext_resource type="PackedScene" uid="uid://b1llh5nmy0kqa" path="res://Entities/Player/player.tscn" id="1_t8ubs"]
+[ext_resource type="PackedScene" uid="uid://cbx8n3fwff347" path="res://Menus/option_scene.tscn" id="2_3yopc"]
+[ext_resource type="PackedScene" uid="uid://dr5kvvsn8nu1m" path="res://Entities/Enemies/enemy_basic.tscn" id="2_oshvi"]
+[ext_resource type="PackedScene" uid="uid://c55pnn7w3bsyq" path="res://Debug/debug.tscn" id="4_god7g"]
+
+[node name="TestScene" type="Node"]
+script = ExtResource("1_2yp7o")
+
+[node name="Options" parent="." instance=ExtResource("2_3yopc")]
+visible = false
+
+[node name="Fond" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.521141, 0.521141, 0.521141, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_t8ubs")]
+position = Vector2(348, 223)
+
+[node name="EnemyBasic" parent="." instance=ExtResource("2_oshvi")]
+position = Vector2(733, 125)
+
+[node name="EnemyBasic2" parent="." instance=ExtResource("2_oshvi")]
+position = Vector2(810, 187)
+
+[node name="EnemyBasic3" parent="." instance=ExtResource("2_oshvi")]
+position = Vector2(800, 307)
+
+[node name="EnemyBasic4" parent="." instance=ExtResource("2_oshvi")]
+position = Vector2(723, 384)
+
+[node name="Debug" parent="." instance=ExtResource("4_god7g")]
+visible = false

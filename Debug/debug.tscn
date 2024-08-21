@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://c55pnn7w3bsyq"]
+
+[node name="debug" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 421.0
+offset_bottom = 130.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 7
+
+[node name="Enemies" type="VBoxContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Spawn" type="Label" parent="MarginContainer/GridContainer/Enemies"]
+layout_mode = 2
+text = "Enemy Code"
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/GridContainer/Enemies"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+placeholder_text = "1"
+autowrap_mode = 2
+
+[node name="SpawnMob" type="Button" parent="MarginContainer/GridContainer/Enemies"]
+layout_mode = 2
+text = "Spawn"
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turrets" type="VBoxContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Spawn" type="Label" parent="MarginContainer/GridContainer/Turrets"]
+layout_mode = 2
+text = "Turret Code"
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/GridContainer/Turrets"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+placeholder_text = "1"
+autowrap_mode = 2
+
+[node name="SpawnMob" type="Button" parent="MarginContainer/GridContainer/Turrets"]
+layout_mode = 2
+text = "Spawn"
+
+[node name="VSeparator3" type="VSeparator" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Invincibility" type="VBoxContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Invincibility" type="Label" parent="MarginContainer/GridContainer/Invincibility"]
+layout_mode = 2
+text = "invincibility"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/GridContainer/Invincibility"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Teleport" type="VBoxContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Teleport" type="Label" parent="MarginContainer/GridContainer/Teleport"]
+layout_mode = 2
+text = "Teleport"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/GridContainer/Teleport"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+scroll_deadzone = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/GridContainer/Teleport/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Button" parent="MarginContainer/GridContainer/Teleport/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Zone 1
+"
+
+[node name="Label2" type="Button" parent="MarginContainer/GridContainer/Teleport/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Zone 1
+"
+
+[node name="Label3" type="Button" parent="MarginContainer/GridContainer/Teleport/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Zone 1
+"
