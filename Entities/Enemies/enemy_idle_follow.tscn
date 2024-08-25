@@ -75,18 +75,18 @@ script = ExtResource("5_mn645")
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("moving_entity", "initial_state", "default_state")]
 script = ExtResource("5_ixoc8")
 moving_entity = NodePath("..")
-initial_state = NodePath("Idle")
-default_state = NodePath("Idle")
+initial_state = NodePath("IdleState")
+default_state = NodePath("IdleState")
 
-[node name="Idle" type="Node2D" parent="StateMachine"]
+[node name="IdleState" type="Node2D" parent="StateMachine"]
 script = ExtResource("6_js5m2")
 
-[node name="Follow" type="Node2D" parent="StateMachine"]
+[node name="FollowEntity" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_5wy6a")
 aggro_distance = 200.0
 stop_aggro_distance = 300.0
 
-[node name="NavigationComponent" parent="StateMachine/Follow" instance=ExtResource("6_7rf1t")]
+[node name="NavigationComponent" parent="StateMachine/FollowEntity" instance=ExtResource("6_7rf1t")]
 
 [node name="BeeingPushedFromPoint" type="Node2D" parent="StateMachine"]
 script = ExtResource("9_2dxgs")

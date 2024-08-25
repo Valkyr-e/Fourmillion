@@ -41,6 +41,132 @@ position = Vector2(363, 201)
 [node name="EnemyFollowIdle" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
 position = Vector2(124, 135)
 
+[node name="EnemyFollowIdle2" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(131, 205)
+
+[node name="EnemyFollowIdle3" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(141, 268)
+
+[node name="EnemyFollowIdle4" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(188, 155)
+
+[node name="EnemyFollowIdle5" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(195, 225)
+
+[node name="EnemyFollowIdle6" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(205, 288)
+
+[node name="EnemyFollowIdle7" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1093, 152)
+
+[node name="EnemyFollowIdle8" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1100, 222)
+
+[node name="EnemyFollowIdle9" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1110, 285)
+
+[node name="EnemyFollowIdle10" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1053, 172)
+
+[node name="EnemyFollowIdle11" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1060, 242)
+
+[node name="EnemyFollowIdle12" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1070, 305)
+
+[node name="EnemyFollowIdle13" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1028, 270)
+
+[node name="EnemyFollowIdle14" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1035, 340)
+
+[node name="EnemyFollowIdle15" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1045, 403)
+
+[node name="EnemyFollowIdle16" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1028, 270)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle17" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1035, 340)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle18" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1045, 403)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle19" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1114, 335)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle20" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1121, 405)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle21" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1131, 468)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle22" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1079, 365)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle23" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1086, 435)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle24" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1096, 498)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle25" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1052, 466)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle26" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1059, 536)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle27" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1069, 599)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle28" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1118, 549)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle29" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1125, 619)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle30" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1135, 682)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle31" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1186, 515)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle32" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1193, 585)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle33" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1203, 648)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle34" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1002, 567)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle35" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1009, 637)
+rotation = -0.535974
+
+[node name="EnemyFollowIdle36" parent="Enemies/Follow" instance=ExtResource("8_h0wfk")]
+position = Vector2(1019, 700)
+rotation = -0.535974
+
 [node name="Charge" type="Node" parent="Enemies"]
 
 [node name="EnemyCharge" parent="Enemies/Charge" instance=ExtResource("4_851yp")]

@@ -30,15 +30,13 @@ func velocity_calculations(delta : float):
 	
 	if entity_main_velocity.dot(initial_velocity) <= 0 :
 		is_ended = true
-		transitioned.emit(null)
+		transitioned.emit("")
 		moving_entity.velocity = Vector2.ZERO
 	
 	
 	
 # Called when the state machine changes its state to this one
 func enter():
-	if moving_entity is Player:
-		moving_entity.lose_control()
 	var direction_pushed = moving_entity.global_position - position_pusher
 	var length_pushed =  direction_pushed.length()
 	var push_proximity = 1/clamp(length_pushed/64, 0.3 , 1)
@@ -55,9 +53,6 @@ func enter():
 # Called when the state machine changes its state from this one to another one
 func exit():
 	moving_entity.reactivate_collision()
-	if moving_entity is Player:
-		moving_entity.regain_control()
-	print("est passé dans exit")
 
 
 # Called in _physics_update() of the StateMachine when this state is active

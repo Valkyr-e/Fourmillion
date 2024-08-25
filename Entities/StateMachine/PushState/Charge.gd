@@ -49,7 +49,7 @@ func enter():
 		current_phase = ChargePhase.BEFORE
 		charge_target_position = global_position + charge_velocity*charge_duration
 	else :
-		transitioned.emit(null)
+		transitioned.emit("")
 	state_active_debug = true 
 	
 	
@@ -57,7 +57,7 @@ func _on_timeout():
 	if current_phase == ChargePhase.AFTER :
 		moving_entity.get_node("AnimationPlayer").play("base")
 		is_ended = true
-		transitioned.emit(null)	
+		transitioned.emit("")	
 	elif current_phase == ChargePhase.CHARGE:
 		moving_entity.get_node("AnimationPlayer").play("after_charge")
 		current_phase = ChargePhase.AFTER

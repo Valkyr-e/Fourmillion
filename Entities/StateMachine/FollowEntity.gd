@@ -44,7 +44,7 @@ func actualize_follow_distances():
 		target = $NavigationComponent/Aggro.get_overlapping_bodies()[0]
 	else : 
 		target = null
-		transitioned.emit(null)
+		transitioned.emit("")
 		
 func initialize_navigation():
 	navigation_agent = $NavigationComponent/NavigationAgent2D 
@@ -92,13 +92,13 @@ func _on_recalculate_navigation_timeout():
 func _on_aggro_body_entered(body):
 	if body.get_collision_layer_value(layer_to_follow)   and ! target:	
 		target = body
-		transitioned.emit(self)
+		transitioned.emit("FollowEntity")
 
 
 func _on_stop_aggro_body_exited(body):
 	if body ==  target:
 		target = null
-		transitioned.emit(null)
+		transitioned.emit("")
 
 func is_retrievable():
 	return (target is CharacterBody2D)

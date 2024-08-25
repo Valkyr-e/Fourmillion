@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities/Components/Health Component/health_component.tscn" id="4_r5342"]
 [ext_resource type="Script" path="res://Entities/StateMachine/StateMachine.gd" id="5_m5h6j"]
 [ext_resource type="Script" path="res://Entities/StateMachine/Idle.gd" id="6_aqhrw"]
-[ext_resource type="Script" path="res://Entities/StateMachine/PushAndDamage.gd" id="7_m48nt"]
+[ext_resource type="Script" path="res://Entities/StateMachine/PushState/PushAndDamage.gd" id="7_m48nt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qfd7"]
 radius = 11.4018

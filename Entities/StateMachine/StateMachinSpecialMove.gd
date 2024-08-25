@@ -19,13 +19,13 @@ func _process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if not (current_state is SpecialMoveState or current_state is IdleState or current_state is DoNothingState):
+	if not (current_state is SpecialMoveState or current_state is IdleState):
 		timer_special_move -= delta
 		if timer_special_move <= 0 :
 			timer_special_move = special_move_cooldown
 			special_move_state.target = current_state.target ##Attention, ne fonctionne que si l'entity est en follow
 			interrupted_state = current_state
-			_on_state_transition(special_move_state)
+			_on_state_transition(special_move_state.name)
 			
 	if current_state:
 		current_state.physics_process(delta)

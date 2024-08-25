@@ -45,21 +45,24 @@ func _physics_process(delta):
 ## if new_state != null, then changes the state to new_state.
 ## if new_state == null, then changes the state to default_state.
 ## This method can be used by children when they don't know which is the next state
-func _on_state_transition(new_state : State):
+func _on_state_transition(new_state_name : String):
 	
 	if current_state:
 		if !current_state.get_is_ended():
 			return
 		current_state.exit()
-		
-	if !new_state :
+	
+	var new_state : State
+	if new_state_name != "":
+		new_state = get_node(new_state_name)
+	else :
 		new_state = default_state
 		if interrupted_state:
 			if interrupted_state.is_retrievable():
 				new_state = interrupted_state
 				interrupted_state = null
-	new_state.enter()
-	current_state = new_state
+	current_state = new_state	
+	current_state.enter()
 	
 	
 	

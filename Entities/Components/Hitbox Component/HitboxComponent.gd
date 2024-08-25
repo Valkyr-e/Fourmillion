@@ -38,7 +38,6 @@ func _on_area_entered(area):
 func handle_attack(area):
 	if area is HitboxComponent :
 		if attack_component and is_attack_ready:
-			print("attack : ", attack_component.ATTACK_DAMAGE)
 			area.launch_attack(attack_component)
 			attack_reset_timer.wait_time = attack_reset_time
 			attack_reset_timer.start()

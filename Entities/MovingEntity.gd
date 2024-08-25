@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	manage_flip()
+	pass
 
 
 func deactivate_collision(custom_layer : int = 0, custom_mask : int = 0):

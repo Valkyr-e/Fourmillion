@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Entities/StateMachine/StateMachinSpecialMove.gd" id="5_k5qtg"]
 [ext_resource type="Script" path="res://Entities/StateMachine/Idle.gd" id="6_t6e43"]
 [ext_resource type="Script" path="res://Entities/StateMachine/FollowEntity.gd" id="7_6hn78"]
-[ext_resource type="Script" path="res://Entities/StateMachine/Charge.gd" id="7_kuo34"]
+[ext_resource type="Script" path="res://Entities/StateMachine/PushState/Charge.gd" id="7_kuo34"]
 [ext_resource type="PackedScene" uid="uid://c5jtjc3i381lj" path="res://Entities/StateMachine/navigation_component.tscn" id="8_mpcly"]
 [ext_resource type="Script" path="res://Debug/label_debug_charge.gd" id="11_ifuo6"]
 
@@ -166,10 +166,10 @@ shape = SubResource("CircleShape2D_nfp1p")
 script = ExtResource("5_k5qtg")
 special_move_state = NodePath("Charge")
 moving_entity = NodePath("..")
-initial_state = NodePath("Idle")
-default_state = NodePath("Idle")
+initial_state = NodePath("IdleState")
+default_state = NodePath("IdleState")
 
-[node name="Idle" type="Node2D" parent="StateMachine"]
+[node name="IdleState" type="Node2D" parent="StateMachine"]
 script = ExtResource("6_t6e43")
 
 [node name="FollowEntity" type="Node2D" parent="StateMachine"]
