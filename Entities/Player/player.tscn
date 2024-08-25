@@ -1,48 +1,110 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1llh5nmy0kqa"]
+[gd_scene load_steps=16 format=3 uid="uid://b1llh5nmy0kqa"]
 
-[ext_resource type="Texture2D" uid="uid://b14xhwestvdsj" path="res://Entities/Player/assets/personnage.png" id="1_h5c25"]
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_w8ot6"]
 [ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities/Components/Health Component/health_component.tscn" id="3_2drn1"]
 [ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities/Components/Hitbox Component/hitbox_component.tscn" id="4_fiy05"]
+[ext_resource type="Texture2D" uid="uid://c3arv7df6pe1k" path="res://progress_bar_fond.png" id="4_quwcu"]
+[ext_resource type="Texture2D" uid="uid://popj0681rll1" path="res://progress_bar.png" id="5_k51my"]
+[ext_resource type="Texture2D" uid="uid://bystc0ceqj8oa" path="res://Entities/Player/assets/perso_animation_body_parts_temp-Sheet.png" id="6_i6wd4"]
 [ext_resource type="PackedScene" uid="uid://degts5oj15lav" path="res://Entities/Components/Bullet Generator Component/bullet_generator.tscn" id="6_sctnf"]
+[ext_resource type="Script" path="res://Entities/StateMachine/StateMachine.gd" id="6_y52bs"]
+[ext_resource type="Script" path="res://Entities/StateMachine/BeeingPushedFromPoint.gd" id="7_5a834"]
+[ext_resource type="Script" path="res://Entities/StateMachine/State.gd" id="8_cnd3j"]
+[ext_resource type="Texture2D" uid="uid://d1m5mjh4ghckc" path="res://progress_bar_devantt.png" id="9_3c34a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2crgh"]
-radius = 11.0
-height = 48.0
+radius = 6.0
+height = 16.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8lnw7"]
-radius = 26.0
-height = 70.0
+radius = 6.0
+height = 16.0
 
-[node name="Player" type="CharacterBody2D"]
-position = Vector2(590, 245)
+[sub_resource type="Animation" id="Animation_si2ml"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tyxjb"]
+_data = {
+"run": SubResource("Animation_si2ml")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon")]
+process_mode = 1
 collision_mask = 10
 script = ExtResource("1_w8ot6")
+SPEED = 250.0
+weapon = NodePath("BulletGenerator")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 28)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_2crgh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("1_h5c25")
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("moving_entity", "initial_state", "default_state")]
+script = ExtResource("6_y52bs")
+moving_entity = NodePath("..")
+initial_state = NodePath("State")
+default_state = NodePath("State")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_2drn1")]
-MAX_HEALTH = 70
+[node name="BeeingPushedFromPoint" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_5a834")
+
+[node name="State" type="Node2D" parent="StateMachine"]
+script = ExtResource("8_cnd3j")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_fiy05")]
-visible = false
 collision_layer = 16
 collision_mask = 34
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, 24)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_8lnw7")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -10)
+texture = ExtResource("6_i6wd4")
+hframes = 8
+frame = 4
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("barre_de_vie") instance=ExtResource("3_2drn1")]
+barre_de_vie = NodePath("HealthBar")
+MAX_HEALTH = 2000
+
+[node name="HealthBar" type="TextureProgressBar" parent="HealthComponent"]
+z_index = 1
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 34.0
+offset_bottom = 11.0
+value = 100.0
+texture_under = ExtResource("4_quwcu")
+texture_over = ExtResource("9_3c34a")
+texture_progress = ExtResource("5_k51my")
+
 [node name="BulletGenerator" parent="." instance=ExtResource("6_sctnf")]
-position = Vector2(-1, 21)
 collision_mask = 34
+detection_radius = 500.0
+RESET_TIME = 0.8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tyxjb")
+}
+autoplay = "run"
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]

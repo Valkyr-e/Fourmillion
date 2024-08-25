@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://6y7hdvnygqeu"]
+[gd_scene load_steps=14 format=3 uid="uid://6y7hdvnygqeu"]
 
-[ext_resource type="Script" path="res://Entities/Enemies/enemy_basic.gd" id="1_0j30v"]
-[ext_resource type="Texture2D" uid="uid://docua86hjwgfi" path="res://Entities/Enemies/assets/enemy.png" id="2_dlcy7"]
+[ext_resource type="Script" path="res://Entities/Enemies/Enemy.gd" id="1_0j30v"]
+[ext_resource type="Texture2D" uid="uid://dkj8pp35d74lo" path="res://Entities/Enemies/assets/enemi_basique-Sheet.png" id="2_6xyhe"]
 [ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities/Components/Hitbox Component/hitbox_component.tscn" id="3_u33s3"]
 [ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities/Components/Health Component/health_component.tscn" id="4_7fsdd"]
 [ext_resource type="Script" path="res://Entities/StateMachine/StateMachine.gd" id="5_ixoc8"]
 [ext_resource type="PackedScene" uid="uid://c5jtjc3i381lj" path="res://Entities/StateMachine/navigation_component.tscn" id="6_7rf1t"]
 [ext_resource type="Script" path="res://Entities/StateMachine/Idle.gd" id="6_js5m2"]
 [ext_resource type="Script" path="res://Entities/StateMachine/FollowEntity.gd" id="7_5wy6a"]
+[ext_resource type="Script" path="res://Entities/StateMachine/BeeingPushedFromPoint.gd" id="9_2dxgs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qfd7"]
 radius = 11.4018
@@ -15,7 +16,31 @@ radius = 11.4018
 [sub_resource type="CircleShape2D" id="CircleShape2D_nfp1p"]
 radius = 22.561
 
+[sub_resource type="Animation" id="Animation_md75h"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vjxi"]
+_data = {
+"run": SubResource("Animation_md75h")
+}
+
 [node name="EnemyFollowIdle" type="CharacterBody2D"]
+process_mode = 1
 collision_layer = 2
 collision_mask = 15
 motion_mode = 1
@@ -24,7 +49,8 @@ SPEED = 200.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_dlcy7")
+texture = ExtResource("2_6xyhe")
+hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8qfd7")
@@ -56,5 +82,14 @@ aggro_distance = 200.0
 stop_aggro_distance = 300.0
 
 [node name="NavigationComponent" parent="StateMachine/Follow" instance=ExtResource("6_7rf1t")]
+
+[node name="BeeingPushedFromPoint" type="Node2D" parent="StateMachine"]
+script = ExtResource("9_2dxgs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8vjxi")
+}
+autoplay = "run"
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

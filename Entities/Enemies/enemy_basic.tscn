@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr5kvvsn8nu1m"]
+[gd_scene load_steps=11 format=3 uid="uid://dr5kvvsn8nu1m"]
 
 [ext_resource type="Texture2D" uid="uid://docua86hjwgfi" path="res://Entities/Enemies/assets/enemy.png" id="1_3a0iv"]
-[ext_resource type="Script" path="res://Entities/Enemies/enemy_basic.gd" id="1_gorbn"]
+[ext_resource type="Script" path="res://Entities/Enemies/Enemy.gd" id="1_gorbn"]
 [ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities/Components/Hitbox Component/hitbox_component.tscn" id="3_2o7bk"]
 [ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities/Components/Health Component/health_component.tscn" id="3_trr2u"]
 [ext_resource type="PackedScene" uid="uid://pf5g0why7nwj" path="res://Entities/Components/Attack Component/attack_component.tscn" id="5_nh7b1"]
+[ext_resource type="Script" path="res://Entities/StateMachine/StateMachine.gd" id="6_bno08"]
+[ext_resource type="Script" path="res://Entities/StateMachine/BeeingPushedFromPoint.gd" id="7_jcv70"]
+[ext_resource type="Script" path="res://Entities/StateMachine/State.gd" id="7_p7gb6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qfd7"]
 radius = 11.4018
@@ -13,10 +16,12 @@ radius = 11.4018
 radius = 22.561
 
 [node name="EnemyBasic" type="CharacterBody2D"]
+process_mode = 1
 position = Vector2(406, 258)
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_gorbn")
+SPEED = 120.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -27,7 +32,7 @@ shape = SubResource("CircleShape2D_8qfd7")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_2o7bk")]
 collision_layer = 32
-collision_mask = 48
+collision_mask = 32
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -38,5 +43,17 @@ shape = SubResource("CircleShape2D_nfp1p")
 MAX_HEALTH = 90
 
 [node name="AttackComponent" parent="." instance=ExtResource("5_nh7b1")]
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("moving_entity", "initial_state", "default_state")]
+script = ExtResource("6_bno08")
+moving_entity = NodePath("..")
+initial_state = NodePath("State")
+default_state = NodePath("State")
+
+[node name="State" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_p7gb6")
+
+[node name="BeeingPushedFromPoint" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_jcv70")
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

@@ -1,5 +1,5 @@
 extends State
-class_name Idle
+class_name IdleState
 
 var moving_entity_velocity : Vector2
 var timer_wander : Timer
@@ -53,6 +53,8 @@ func _on_wander_timeout():
 		var to_origin = (origin_position - moving_entity.global_position).normalized()
 		moving_entity_velocity = (to_origin*origin_bias_weight + rand_vector*(1-origin_bias_weight)).normalized()*moving_entity.WANDER_SPEED
 	else :	
+		
 		moving_entity_velocity = rand_vector*moving_entity.WANDER_SPEED
 	timer_wander.wait_time = randf_range(time_wander_change_min,time_wander_change_max)
+
 

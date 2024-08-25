@@ -29,7 +29,6 @@ func _physics_process(delta):
 	if collision_info is KinematicCollision2D:
 		#if collision_info.get_collider() is Enemy : #ATTENTION cette partie sera remplacée par les components
 			##collision_info.get_collider()._on_hit(DAMAGE)
-			#print("Touché")
 		on_life_end()
 
 func on_life_end() :

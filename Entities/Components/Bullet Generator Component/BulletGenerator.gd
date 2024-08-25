@@ -3,41 +3,49 @@
 extends Node2D
 class_name BulletGenerator
 
-#signal bullet_launched(bullet_scene)
+
+var nearest_enemy : CharacterBody2D = null #ATTENTION plutôt character2D car sinon un ennemi ne peut pas l'utiliser ?
+var enemies : Array[CharacterBody2D]
+var is_active : bool = false
 
 @export var bullet : PackedScene
 @export var detection_radius : float = 300.0
+@export var RESET_TIME : float = 0.5
 
-var RESET_TIME : float = 0.5
-var nearest_enemy : Enemy = null #ATTENTION plutôt character2D car sinon un ennemi ne peut pas l'utiliser ?
-var enemies : Array[CharacterBody2D]
+
 
 
 func _ready():
 	#Initialise la taille de l'aire de détection
 	$CollisionShape2D.shape.radius = detection_radius
-	print($CollisionShape2D.get_shape().radius)
 	
 	#Initialise la durée du timer entre chaque tir
 	$ResetTimer.wait_time = RESET_TIME
 
 
-func _physics_process(delta):
+func set_activation(b : bool):
+	is_active = b
+	
+func _physics_process(_delta):
 	pass
 
 func _on_reset_timer_timeout():
-	if enemies != [] :
+	if enemies != [] and is_active:
 		find_nearest_enemy()
 		shoot_bullet(bullet)
-		clean_enemy_list(enemies) #remove dead enemies from the list
-		#print(nearest_enemy)
+	clean_enemy_list(enemies) #remove dead enemies from the list
+
 
 func _on_area_entered(area):
-	enemies.append(area.get_parent())
-	#print(enemies)
+	var parent = area.get_parent()
+	if parent is CharacterBody2D:
+		enemies.append(parent)
+
 
 func _on_area_exited(area):
-	enemies.erase(area.get_parent())
+	var parent = area.get_parent()
+	if parent is CharacterBody2D:
+		enemies.erase(parent)
 
 func shoot_bullet(bullet_type : PackedScene) :
 	var bullet_instance = bullet_type.instantiate()

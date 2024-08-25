@@ -2,7 +2,7 @@
 
 extends Node2D
 class_name State
-
+# 
 var moving_entity : PhysicsBody2D
 
 # signal emited when the state changes from : self to next_state
@@ -19,10 +19,16 @@ func exit():
 
 # Called in _process() of the StateMachine when this state is active
 # This is NOT _process()
-func process(delta):
+func process(_delta):
 	pass
 	
 # Called in _physics_update() of the StateMachine when this state is active
 # This is NOT _physics_update()
-func physics_update(delta):
+func physics_process(_delta):
 	pass
+
+func is_retrievable():
+	return true
+
+func get_is_ended():
+	return true

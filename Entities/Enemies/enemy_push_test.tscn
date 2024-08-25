@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://dr2uq37quuk4g"]
+
+[ext_resource type="Script" path="res://Entities/Enemies/Enemy.gd" id="1_44of1"]
+[ext_resource type="Texture2D" uid="uid://docua86hjwgfi" path="res://Entities/Enemies/assets/enemy.png" id="2_uwg8x"]
+[ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities/Components/Hitbox Component/hitbox_component.tscn" id="3_qjigb"]
+[ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities/Components/Health Component/health_component.tscn" id="4_r5342"]
+[ext_resource type="Script" path="res://Entities/StateMachine/StateMachine.gd" id="5_m5h6j"]
+[ext_resource type="Script" path="res://Entities/StateMachine/Idle.gd" id="6_aqhrw"]
+[ext_resource type="Script" path="res://Entities/StateMachine/PushAndDamage.gd" id="7_m48nt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qfd7"]
+radius = 11.4018
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfp1p"]
+radius = 22.561
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nh8n7"]
+radius = 108.167
+
+[node name="EnemyPushTest" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 2
+collision_mask = 15
+motion_mode = 1
+script = ExtResource("1_44of1")
+SPEED = 200.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uwg8x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8qfd7")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_qjigb")]
+collision_layer = 32
+collision_mask = 48
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+modulate = Color(1, 0.360784, 0.2, 1)
+shape = SubResource("CircleShape2D_nfp1p")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_r5342")]
+MAX_HEALTH = 1000
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("moving_entity", "initial_state", "default_state")]
+script = ExtResource("5_m5h6j")
+moving_entity = NodePath("..")
+initial_state = NodePath("PushState")
+default_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("6_aqhrw")
+
+[node name="PushState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("push_area")]
+script = ExtResource("7_m48nt")
+push_area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="StateMachine/PushState"]
+collision_layer = 32
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/PushState/Area2D"]
+shape = SubResource("CircleShape2D_nh8n7")
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
