@@ -1,16 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1llh5nmy0kqa"]
+[gd_scene load_steps=13 format=3 uid="uid://b1llh5nmy0kqa"]
 
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_w8ot6"]
 [ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities/Components/Health Component/health_component.tscn" id="3_2drn1"]
 [ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities/Components/Hitbox Component/hitbox_component.tscn" id="4_fiy05"]
-[ext_resource type="Texture2D" uid="uid://c3arv7df6pe1k" path="res://progress_bar_fond.png" id="4_quwcu"]
-[ext_resource type="Texture2D" uid="uid://popj0681rll1" path="res://progress_bar.png" id="5_k51my"]
 [ext_resource type="Texture2D" uid="uid://bystc0ceqj8oa" path="res://Entities/Player/assets/perso_animation_body_parts_temp-Sheet.png" id="6_i6wd4"]
 [ext_resource type="PackedScene" uid="uid://degts5oj15lav" path="res://Entities/Components/Bullet Generator Component/bullet_generator.tscn" id="6_sctnf"]
 [ext_resource type="Script" path="res://Entities/StateMachine/StateMachine.gd" id="6_y52bs"]
 [ext_resource type="Script" path="res://Entities/StateMachine/BeeingPushedFromPoint.gd" id="7_5a834"]
 [ext_resource type="Script" path="res://Entities/StateMachine/State.gd" id="8_cnd3j"]
-[ext_resource type="Texture2D" uid="uid://d1m5mjh4ghckc" path="res://progress_bar_devantt.png" id="9_3c34a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2crgh"]
 radius = 6.0
@@ -80,20 +77,8 @@ texture = ExtResource("6_i6wd4")
 hframes = 8
 frame = 4
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("barre_de_vie") instance=ExtResource("3_2drn1")]
-barre_de_vie = NodePath("HealthBar")
+[node name="HealthComponent" parent="." instance=ExtResource("3_2drn1")]
 MAX_HEALTH = 2000
-
-[node name="HealthBar" type="TextureProgressBar" parent="HealthComponent"]
-z_index = 1
-offset_left = 2.0
-offset_top = 3.0
-offset_right = 34.0
-offset_bottom = 11.0
-value = 100.0
-texture_under = ExtResource("4_quwcu")
-texture_over = ExtResource("9_3c34a")
-texture_progress = ExtResource("5_k51my")
 
 [node name="BulletGenerator" parent="." instance=ExtResource("6_sctnf")]
 collision_mask = 34

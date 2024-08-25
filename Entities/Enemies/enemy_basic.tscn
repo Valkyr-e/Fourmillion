@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr5kvvsn8nu1m"]
+[gd_scene load_steps=12 format=3 uid="uid://dr5kvvsn8nu1m"]
 
 [ext_resource type="Texture2D" uid="uid://docua86hjwgfi" path="res://Entities/Enemies/assets/enemy.png" id="1_3a0iv"]
 [ext_resource type="Script" path="res://Entities/Enemies/Enemy.gd" id="1_gorbn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Entities/StateMachine/StateMachine.gd" id="6_bno08"]
 [ext_resource type="Script" path="res://Entities/StateMachine/BeeingPushedFromPoint.gd" id="7_jcv70"]
 [ext_resource type="Script" path="res://Entities/StateMachine/State.gd" id="7_p7gb6"]
+[ext_resource type="Script" path="res://Debug/label_debug_charge.gd" id="9_gloul"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qfd7"]
 radius = 11.4018
@@ -17,12 +18,10 @@ radius = 22.561
 
 [node name="EnemyBasic" type="CharacterBody2D"]
 process_mode = 1
-position = Vector2(406, 258)
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_gorbn")
 SPEED = 120.0
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3a0iv")
@@ -55,5 +54,13 @@ script = ExtResource("7_p7gb6")
 
 [node name="BeeingPushedFromPoint" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_jcv70")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -50.0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 46.0
+text = "ici"
+script = ExtResource("9_gloul")
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

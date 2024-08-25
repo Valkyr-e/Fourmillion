@@ -9,6 +9,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if get_parent().get_node("StateMachine").current_state.get_is_ended():
-		text = get_parent().get_node("StateMachine").current_state.name + " ;  FINI " 
+		text = get_parent().get_node("StateMachine").current_state.name #+ " ;  FINI " 
 	else : 
-		text = get_parent().get_node("StateMachine").current_state.name + " ;  EN COURS" 
+		text = get_parent().get_node("StateMachine").current_state.name #+ " ;  EN COURS" 

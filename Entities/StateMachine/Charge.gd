@@ -47,7 +47,7 @@ func enter():
 		moving_entity.get_node("AnimationPlayer").play("before_charge")
 		is_ended = false
 		current_phase = ChargePhase.BEFORE
-		charge_target_position = direction_to_target
+		charge_target_position = global_position + charge_velocity*charge_duration
 	else :
 		transitioned.emit(null)
 	state_active_debug = true 
@@ -86,7 +86,7 @@ func exit():
 
 func _draw():
 	if state_active_debug  :
-		draw_line(Vector2.ZERO, charge_target_position-global_position, Color.RED ,  5)
+		draw_line(Vector2.ZERO, charge_target_position - global_position, Color.RED ,  5)
 	
 func is_retrievable():
 	return false

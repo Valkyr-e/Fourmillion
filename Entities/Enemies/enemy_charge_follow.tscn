@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bhclg65qtvit4"]
+[gd_scene load_steps=20 format=3 uid="uid://bhclg65qtvit4"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Enemy.gd" id="1_yd3fh"]
 [ext_resource type="Texture2D" uid="uid://vp5eed35pi7y" path="res://Entities/Enemies/assets/ennemi_charge-Sheet.png" id="2_xkd00"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Entities/StateMachine/FollowEntity.gd" id="7_6hn78"]
 [ext_resource type="Script" path="res://Entities/StateMachine/Charge.gd" id="7_kuo34"]
 [ext_resource type="PackedScene" uid="uid://c5jtjc3i381lj" path="res://Entities/StateMachine/navigation_component.tscn" id="8_mpcly"]
+[ext_resource type="Script" path="res://Debug/label_debug_charge.gd" id="11_ifuo6"]
 
 [sub_resource type="Animation" id="Animation_qslyg"]
 resource_name = "after_charge"
@@ -128,7 +129,6 @@ motion_mode = 1
 script = ExtResource("1_yd3fh")
 WANDER_SPEED = 100.0
 SPEED = 120.0
-metadata/_edit_group_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -150,12 +150,13 @@ shape = SubResource("CircleShape2D_8qfd7")
 script = ExtResource("3_221m1")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_am5ik")]
-MAX_HEALTH = 1000
+MAX_HEALTH = 500
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_cyxiw")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("3_cyxiw")]
 collision_layer = 32
-collision_mask = 32
+collision_mask = 16
 health_component = NodePath("../HealthComponent")
+attack_component = NodePath("../AttackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 modulate = Color(1, 0.360784, 0.2, 1)
@@ -187,5 +188,12 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Charge/Area2D"]
 shape = SubResource("CircleShape2D_nh8n7")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -47.0
+offset_top = 16.0
+offset_right = 47.0
+offset_bottom = 39.0
+script = ExtResource("11_ifuo6")
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

@@ -1,14 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://6y7hdvnygqeu"]
+[gd_scene load_steps=16 format=3 uid="uid://6y7hdvnygqeu"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Enemy.gd" id="1_0j30v"]
 [ext_resource type="Texture2D" uid="uid://dkj8pp35d74lo" path="res://Entities/Enemies/assets/enemi_basique-Sheet.png" id="2_6xyhe"]
 [ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities/Components/Hitbox Component/hitbox_component.tscn" id="3_u33s3"]
 [ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities/Components/Health Component/health_component.tscn" id="4_7fsdd"]
 [ext_resource type="Script" path="res://Entities/StateMachine/StateMachine.gd" id="5_ixoc8"]
+[ext_resource type="Script" path="res://Entities/Components/Attack Component/AttackComponent.gd" id="5_mn645"]
 [ext_resource type="PackedScene" uid="uid://c5jtjc3i381lj" path="res://Entities/StateMachine/navigation_component.tscn" id="6_7rf1t"]
 [ext_resource type="Script" path="res://Entities/StateMachine/Idle.gd" id="6_js5m2"]
 [ext_resource type="Script" path="res://Entities/StateMachine/FollowEntity.gd" id="7_5wy6a"]
 [ext_resource type="Script" path="res://Entities/StateMachine/BeeingPushedFromPoint.gd" id="9_2dxgs"]
+[ext_resource type="Script" path="res://Debug/label_debug_charge.gd" id="10_clker"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qfd7"]
 radius = 11.4018
@@ -46,7 +48,6 @@ collision_mask = 15
 motion_mode = 1
 script = ExtResource("1_0j30v")
 SPEED = 200.0
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_6xyhe")
@@ -55,17 +56,21 @@ hframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8qfd7")
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_u33s3")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("3_u33s3")]
 collision_layer = 32
-collision_mask = 48
+collision_mask = 16
 health_component = NodePath("../HealthComponent")
+attack_component = NodePath("../AttackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 modulate = Color(1, 0.360784, 0.2, 1)
 shape = SubResource("CircleShape2D_nfp1p")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_7fsdd")]
-MAX_HEALTH = 1000
+MAX_HEALTH = 200
+
+[node name="AttackComponent" type="Node" parent="."]
+script = ExtResource("5_mn645")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("moving_entity", "initial_state", "default_state")]
 script = ExtResource("5_ixoc8")
@@ -91,5 +96,12 @@ libraries = {
 "": SubResource("AnimationLibrary_8vjxi")
 }
 autoplay = "run"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -27.0
+offset_top = 12.0
+offset_right = 27.0
+offset_bottom = 35.0
+script = ExtResource("10_clker")
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

@@ -53,11 +53,11 @@ func _on_quit_pressed():
 
 
 
-func _on_main_volume_slider_value_changed(value):
+func _on_main_volume_slider_value_changed(_value):
 	pass # Replace with function body.
 
 
-func _on_music_volume_slider_value_changed(value):
+func _on_music_volume_slider_value_changed(_value):
 	pass # Replace with function body.
 
 
@@ -65,5 +65,5 @@ func _on_full_screen_toggled(toggled_on):
 	GlobalSettings.switch_fullscreen(toggled_on)
 
 
-func _on_v_sync_toggled(toggled_on):
+func _on_v_sync_toggled(_toggled_on):
 	pass # Replace with function body.

@@ -12,6 +12,7 @@ var is_active : bool = false
 @export var detection_radius : float = 300.0
 @export var RESET_TIME : float = 0.5
 
+signal weapon_changed_state(b : bool)
 
 
 
@@ -24,6 +25,8 @@ func _ready():
 
 
 func set_activation(b : bool):
+	if is_active != b :
+		weapon_changed_state.emit(b)
 	is_active = b
 	
 func _physics_process(_delta):

@@ -10,7 +10,7 @@ func _ready():
 	options_node = find_node('Options')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _input(event):

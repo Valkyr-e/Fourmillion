@@ -10,9 +10,4 @@ func _process(_delta):
 func _physics_process(_delta):
 	pass
 
-func _on_hitbox_component_area_entered(area):
-	if area is HitboxComponent :
-		var attack = AttackComponent.new()
-		attack.damage = 10
-		area.launch_attack(attack)
 

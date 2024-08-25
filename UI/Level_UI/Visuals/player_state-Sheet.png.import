@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://popj0681rll1"
-path="res://.godot/imported/progress_bar.png-be8ad98b3408e1cb90542de1c19a1913.ctex"
+uid="uid://cbye4euhxvn2y"
+path="res://.godot/imported/player_state-Sheet.png-dd42b7b8ca7dad4b0132a29184968af8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://progress_bar.png"
-dest_files=["res://.godot/imported/progress_bar.png-be8ad98b3408e1cb90542de1c19a1913.ctex"]
+source_file="res://UI/Level_UI/Visuals/player_state-Sheet.png"
+dest_files=["res://.godot/imported/player_state-Sheet.png-dd42b7b8ca7dad4b0132a29184968af8.ctex"]
 
 [params]
 
