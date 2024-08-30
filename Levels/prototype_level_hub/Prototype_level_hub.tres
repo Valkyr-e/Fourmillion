@@ -1,0 +1,56 @@
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://cnqpxw0q4sduv"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_dfemd"]
+default_input_values = [0, -5.0, 1, 0.0, 2, 0.0]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_0fg3a"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_rnc8l"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 0.0, 2, 1e-05, 3, Vector3(1, 1, 1), 4, Vector3(1, 1, 1), 5, Vector3(0, 0, 0)]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_33077"]
+default_input_values = [0, -5.0, 1, 0.0, 2, 0.0]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_6ftj3"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_5m8wn"]
+input_name = "texture_pixel_size"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_iq3su"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(900, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_0fg3a")
+nodes/fragment/2/position = Vector2(-260, 200)
+nodes/fragment/5/node = SubResource("VisualShaderNodeIf_rnc8l")
+nodes/fragment/5/position = Vector2(560, 420)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorCompose_33077")
+nodes/fragment/6/position = Vector2(-320, 560)
+nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_6ftj3")
+nodes/fragment/7/position = Vector2(300, 420)
+nodes/fragment/8/node = SubResource("VisualShaderNodeInput_5m8wn")
+nodes/fragment/8/position = Vector2(-360, 720)
+nodes/fragment/9/node = SubResource("VisualShaderNodeVectorOp_iq3su")
+nodes/fragment/9/position = Vector2(-20, 620)
+nodes/fragment/10/node = SubResource("VisualShaderNodeVectorCompose_dfemd")
+nodes/fragment/10/position = Vector2(120, 240)
+nodes/fragment/connections = PackedInt32Array(6, 0, 9, 0, 8, 0, 9, 1, 9, 0, 7, 1, 2, 1, 10, 0, 2, 2, 10, 1, 10, 0, 7, 0)

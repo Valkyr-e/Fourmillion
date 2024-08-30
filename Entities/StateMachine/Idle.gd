@@ -56,5 +56,3 @@ func _on_wander_timeout():
 		
 		moving_entity_velocity = rand_vector*moving_entity.WANDER_SPEED
 	timer_wander.wait_time = randf_range(time_wander_change_min,time_wander_change_max)
-
-

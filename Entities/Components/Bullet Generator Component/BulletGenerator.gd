@@ -3,11 +3,14 @@
 extends Node2D
 class_name BulletGenerator
 
+enum TARGET {enemy, player, all}
 
 var nearest_enemy : CharacterBody2D = null #ATTENTION plutôt character2D car sinon un ennemi ne peut pas l'utiliser ?
 var enemies : Array[CharacterBody2D]
-var is_active : bool = false
 
+@export var managed_by_player : bool = false
+@export var is_active : bool = true
+@export var target: TARGET
 @export var bullet : PackedScene
 @export var detection_radius : float = 300.0
 @export var RESET_TIME : float = 0.5
@@ -25,9 +28,10 @@ func _ready():
 
 
 func set_activation(b : bool):
-	if is_active != b :
-		weapon_changed_state.emit(b)
-	is_active = b
+	if managed_by_player: 
+		if is_active != b :
+			weapon_changed_state.emit(b)
+		is_active = b
 	
 func _physics_process(_delta):
 	pass
@@ -39,16 +43,16 @@ func _on_reset_timer_timeout():
 	clean_enemy_list(enemies) #remove dead enemies from the list
 
 
-func _on_area_entered(area):
-	var parent = area.get_parent()
-	if parent is CharacterBody2D:
-		enemies.append(parent)
-
-
-func _on_area_exited(area):
-	var parent = area.get_parent()
-	if parent is CharacterBody2D:
-		enemies.erase(parent)
+#func _on_area_entered(area):
+	#var parent = area.get_parent()
+	#if parent is CharacterBody2D:
+		#enemies.append(parent)
+#
+#
+#func _on_area_exited(area):
+	#var parent = area.get_parent()
+	#if parent is CharacterBody2D:
+		#enemies.erase(parent)
 
 func shoot_bullet(bullet_type : PackedScene) :
 	var bullet_instance = bullet_type.instantiate()
@@ -72,3 +76,28 @@ func clean_enemy_list(enemy_list : Array[CharacterBody2D]) :
 		if str(_e) == "<Freed Object>":
 			enemy_list.erase(_e)
 		
+
+
+func _on_body_entered(body):
+	match target:
+		TARGET.enemy:
+			if body is Enemy:
+				enemies.append(body)
+		TARGET.player:
+			if body is Player :
+				enemies.append(body)
+		TARGET.all:
+			if body is Player or body is Enemy:
+				enemies.append(body)
+
+func _on_body_exited(body):
+	match target:
+		TARGET.enemy:
+			if body is Enemy:
+				enemies.erase(body)
+		TARGET.player:
+			if body is Player :
+				enemies.erase(body)
+		TARGET.all:
+			if body is Player or body is Enemy:
+				enemies.erase(body)

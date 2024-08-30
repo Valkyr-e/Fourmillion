@@ -81,6 +81,7 @@ script = ExtResource("4_wwf4b")
 
 [node name="PlayerMove" type="Node2D" parent="StateMachine"]
 script = ExtResource("6_a8v2a")
+SPEED = 200.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_fiy05")]
 collision_layer = 16
@@ -102,6 +103,8 @@ MAX_HEALTH = 2000
 
 [node name="BulletGenerator" parent="." instance=ExtResource("6_sctnf")]
 collision_mask = 34
+managed_by_player = true
+is_active = false
 detection_radius = 500.0
 RESET_TIME = 0.8
 

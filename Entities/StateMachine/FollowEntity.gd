@@ -102,4 +102,3 @@ func _on_stop_aggro_body_exited(body):
 
 func is_retrievable():
 	return (target is CharacterBody2D)
-

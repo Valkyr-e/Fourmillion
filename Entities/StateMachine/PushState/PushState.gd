@@ -19,10 +19,11 @@ func physics_process(_delta):
 	
 	
 func push(body):
-	var pushed_state = body.get_node("StateMachine/BeeingPushedFromPoint")
-	if pushed_state :
-		pushed_state.position_pusher = self.global_position
-		pushed_state.transitioned.emit("BeeingPushedFromPoint")
+	if body.has_node("StateMachine/BeeingPushedFromPoint"):
+		var pushed_state = body.get_node("StateMachine/BeeingPushedFromPoint")
+		if pushed_state :
+			pushed_state.position_pusher = self.global_position
+			pushed_state.transitioned.emit("BeeingPushedFromPoint")
 		
 func push_all_bodies():
 	for body in overlapping_bodies:

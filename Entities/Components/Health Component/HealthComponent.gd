@@ -34,13 +34,10 @@ func _process(_delta):
 
 func on_attack(attack : AttackComponent) :
 	health_info.health -= attack.ATTACK_DAMAGE
-	print(attack.ATTACK_DAMAGE)
 	if health_info.health <= 0 :
 		just_died.emit()
 	if get_parent() is Player :
 		healthbar_needs_change.emit(health_info.healthbar_value())
-	else :
-		print(get_parent().name , " damage taken  : " ,attack.ATTACK_DAMAGE ," percent health : " ,health_info.healthbar_value())
 	
 func _on_just_died():
 	var parent = get_parent()
@@ -48,6 +45,3 @@ func _on_just_died():
 		parent.queue_free() 
 	elif parent is Player :
 		parent.queue_free() 
-
-
-

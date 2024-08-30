@@ -9,5 +9,3 @@ func _process(_delta):
 	
 func _physics_process(_delta):
 	pass
-
-

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c26321j1nohlp"]
+
+[ext_resource type="Texture2D" uid="uid://c4tjejcs80ptn" path="res://Levels/Assets/little_rocks.png" id="1_g72nu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ol5at"]
+texture = ExtResource("1_g72nu")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+4:0/size_in_atlas = Vector2i(2, 1)
+4:0/0 = 0
+4:1/size_in_atlas = Vector2i(2, 1)
+4:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_us3rt"]
+sources/0 = SubResource("TileSetAtlasSource_ol5at")
+
+[node name="Terrain Details" type="TileMapLayer"]
+tile_set = SubResource("TileSet_us3rt")
