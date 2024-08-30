@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ys62evbyl4v4"]
+
+[ext_resource type="Script" path="res://Entities and Weapons/Armoury/Bullets/bullet.gd" id="1_a5j8b"]
+[ext_resource type="Texture2D" uid="uid://cictcxkil8ick" path="res://Entities and Weapons/Armoury/Bullets/Assets/Bullet.png" id="1_wc8cr"]
+[ext_resource type="PackedScene" uid="uid://pf5g0why7nwj" path="res://Entities and Weapons/Components/Attack Component/attack_component.tscn" id="3_0aoxv"]
+[ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities and Weapons/Components/Hitbox Component/hitbox_component.tscn" id="4_l7vok"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_isnyh"]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ogf00"]
+radius = 3.0
+height = 14.0
+
+[node name="Bullet" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 4
+collision_mask = 42
+script = ExtResource("1_a5j8b")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wc8cr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_isnyh")
+
+[node name="AttackComponent" parent="." instance=ExtResource("3_0aoxv")]
+ATTACK_DAMAGE = 5
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("4_l7vok")]
+collision_layer = 20
+collision_mask = 42
+attack_component = NodePath("../AttackComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ogf00")

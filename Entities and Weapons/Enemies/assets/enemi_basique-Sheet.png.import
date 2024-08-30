@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c86vt31146utl"
-path="res://.godot/imported/hitbox_component_icon.png-3d08a05f848f8a771e5b41d5c7bcf779.ctex"
+uid="uid://dkj8pp35d74lo"
+path="res://.godot/imported/enemi_basique-Sheet.png-35b2a1947db75f6e1628b2ed824ce317.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Icons/hitbox_component_icon.png"
-dest_files=["res://.godot/imported/hitbox_component_icon.png-3d08a05f848f8a771e5b41d5c7bcf779.ctex"]
+source_file="res://Entities and Weapons/Enemies/assets/enemi_basique-Sheet.png"
+dest_files=["res://.godot/imported/enemi_basique-Sheet.png-35b2a1947db75f6e1628b2ed824ce317.ctex"]
 
 [params]
 

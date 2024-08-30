@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c86vt31146utl"
-path="res://.godot/imported/hitbox_component_icon.png-3d08a05f848f8a771e5b41d5c7bcf779.ctex"
+uid="uid://cpy36hdxjjgq5"
+path="res://.godot/imported/tileset_rocks.png-709d771942d2f1184262ebddcefdb14a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Icons/hitbox_component_icon.png"
-dest_files=["res://.godot/imported/hitbox_component_icon.png-3d08a05f848f8a771e5b41d5c7bcf779.ctex"]
+source_file="res://Z NE PAS OUVRIR ( PORN )/Levels/tileset_rocks.png"
+dest_files=["res://.godot/imported/tileset_rocks.png-709d771942d2f1184262ebddcefdb14a.ctex"]
 
 [params]
 

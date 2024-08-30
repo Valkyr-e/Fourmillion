@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c86vt31146utl"
-path="res://.godot/imported/hitbox_component_icon.png-3d08a05f848f8a771e5b41d5c7bcf779.ctex"
+uid="uid://dqri3tjltj5g4"
+path="res://.godot/imported/turret.png-c82768ff1f61eab2745aeba16fee4841.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Icons/hitbox_component_icon.png"
-dest_files=["res://.godot/imported/hitbox_component_icon.png-3d08a05f848f8a771e5b41d5c7bcf779.ctex"]
+source_file="res://Entities and Weapons/Armoury/Turrets/turret.png"
+dest_files=["res://.godot/imported/turret.png-c82768ff1f61eab2745aeba16fee4841.ctex"]
 
 [params]
 

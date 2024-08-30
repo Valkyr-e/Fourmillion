@@ -22,10 +22,9 @@ func _input(event):
 			debug_node.visible = !debug_node.visible
 			
 
-func find_node(nodeName) -> Node:
-	var node_found = get_node(nodeName)
-	if node_found :
-		return node_found
+func find_node(node_name) -> Node:
+	if has_node(node_name) :
+		return get_node(node_name)
 	else:
-		printerr("Couldn't find the \"" + nodeName + " \"node in the current scene. Check if the name of the nod has changed or if it is really missing in the scene.")
+		printerr("Couldn't find the \"" + node_name + " \"node in the current scene. Check if the name of the nod has changed or if it is really missing in the scene.")
 		return null

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bklnq45yyq2rl"]
+
+[ext_resource type="Script" path="res://Entities and Weapons/Armoury/Turrets/turret_host.gd" id="1_rc2nr"]
+[ext_resource type="Texture2D" uid="uid://ncca2x7bfcx7" path="res://Entities and Weapons/Armoury/Turrets/turret_hosts.png" id="2_7fuau"]
+[ext_resource type="PackedScene" uid="uid://634ig4gkigeb" path="res://Entities and Weapons/Armoury/Turrets/Turret.tscn" id="2_x6c8x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rf1j3"]
+radius = 64.0
+
+[node name="TurretHost" type="Node2D"]
+script = ExtResource("1_rc2nr")
+turret = ExtResource("2_x6c8x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7fuau")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rf1j3")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -54.0
+offset_top = -50.0
+offset_right = 54.0
+offset_bottom = -27.0
+text = "Appuyer sur E"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

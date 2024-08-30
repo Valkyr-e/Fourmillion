@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://634ig4gkigeb"]
+
+[ext_resource type="PackedScene" uid="uid://degts5oj15lav" path="res://Entities and Weapons/Components/Bullet Generator Component/bullet_generator.tscn" id="2_jaubo"]
+[ext_resource type="Texture2D" uid="uid://dqri3tjltj5g4" path="res://Entities and Weapons/Armoury/Turrets/turret.png" id="2_p7a37"]
+
+[node name="Turret" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p7a37")
+
+[node name="BulletGenerator" parent="." instance=ExtResource("2_jaubo")]
+detection_radius = 600.0

@@ -1,5 +1,6 @@
 extends Node
-
+### Ici c'est pour gérer les options (affichage, son , etc) mais pour le moment c'est 
+### pas très complet
 
 func switch_fullscreen(bool_value : bool):
 	if bool_value:

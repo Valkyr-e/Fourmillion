@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl20lto7o4dut"]
+
+[ext_resource type="PackedScene" uid="uid://bpdb5wt7ogqdm" path="res://Levels/Tilemap/TileMap_layer_background.tscn" id="1_2j4vp"]
+[ext_resource type="PackedScene" uid="uid://bh1yg0f6qlo8q" path="res://Levels/Tilemap/TileMap_layer_Collisions.tscn" id="2_iwldw"]
+[ext_resource type="PackedScene" uid="uid://c26321j1nohlp" path="res://Z NE PAS OUVRIR ( PORN )/Levels/TileMaps/TileMap_layer_Details.tscn" id="3_2pmf3"]
+
+[node name="Layer0" type="Node2D"]
+
+[node name="Terrain Background" parent="." instance=ExtResource("1_2j4vp")]
+
+[node name="Terrain Collisions" parent="." instance=ExtResource("2_iwldw")]
+
+[node name="Terrain Details" parent="." instance=ExtResource("3_2pmf3")]
