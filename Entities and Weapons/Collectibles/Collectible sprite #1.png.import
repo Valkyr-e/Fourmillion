@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2mtmn61gtgof"
-path="res://.godot/imported/bullet_generator_icon.png-89beb1b27f44210bdff20d338f6dcffe.ctex"
+uid="uid://bkl4okaof3p1g"
+path="res://.godot/imported/Collectible sprite #1.png-1db0ad7e18f6d14bdef259961c93c43a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/bullet_generator_icon.png"
-dest_files=["res://.godot/imported/bullet_generator_icon.png-89beb1b27f44210bdff20d338f6dcffe.ctex"]
+source_file="res://Entities and Weapons/Collectibles/Collectible sprite #1.png"
+dest_files=["res://.godot/imported/Collectible sprite #1.png-1db0ad7e18f6d14bdef259961c93c43a.ctex"]
 
 [params]
 

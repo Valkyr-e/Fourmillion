@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://biby71crms1hv"]
+[gd_scene load_steps=9 format=4 uid="uid://biby71crms1hv"]
 
 [ext_resource type="PackedScene" uid="uid://b1llh5nmy0kqa" path="res://Entities and Weapons/Player/player.tscn" id="1_t8ubs"]
 [ext_resource type="PackedScene" uid="uid://bpdb5wt7ogqdm" path="res://Levels/Tilemap/TileMap_layer_background.tscn" id="2_k8dcg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://6y7hdvnygqeu" path="res://Entities and Weapons/Enemies/enemy_follow.tscn" id="5_mgrvd"]
 [ext_resource type="PackedScene" uid="uid://bhclg65qtvit4" path="res://Entities and Weapons/Enemies/enemy_charge.tscn" id="6_0wyjt"]
 [ext_resource type="PackedScene" uid="uid://bklnq45yyq2rl" path="res://Entities and Weapons/Armoury/Turrets/TurretHost.tscn" id="7_6dsd8"]
+[ext_resource type="PackedScene" uid="uid://bgojw74kmiasr" path="res://Entities and Weapons/Collectibles/collectible.tscn" id="8_ftdta"]
 [ext_resource type="PackedScene" uid="uid://d1d8p4tmq8v6p" path="res://UI/Level_UI/level_ui.tscn" id="8_gnkcg"]
 
 [node name="TestScene" type="Node2D"]
@@ -33,3 +34,15 @@ position = Vector2(92, 234)
 
 [node name="LevelUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_gnkcg")]
 player = NodePath("../Player")
+
+[node name="Collectible" parent="." instance=ExtResource("8_ftdta")]
+position = Vector2(536, 251)
+
+[node name="Collectible2" parent="." instance=ExtResource("8_ftdta")]
+position = Vector2(558, 160)
+
+[node name="Collectible3" parent="." instance=ExtResource("8_ftdta")]
+position = Vector2(477, 266)
+
+[node name="Collectible4" parent="." instance=ExtResource("8_ftdta")]
+position = Vector2(565, 221)
