@@ -6,7 +6,6 @@ func findNodeByName(nodeName):
 	return get_tree().get_root().get_node(get_tree().current_scene.name +"/"+ nodeName)
 
 ### Gestion des collectibles
-
 var tower_building_collectible_counter : int 
 var tower_upgrading_collectible_counter : int
 

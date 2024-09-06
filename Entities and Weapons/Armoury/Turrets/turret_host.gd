@@ -10,7 +10,7 @@ func _ready():
 
 func _input(event): #fait apparaître une tourelle
 	if Input.is_action_just_pressed("interact") and player_is_in:
-		if Global.tower_building_collectible_counter > turret_cost :
+		if Global.tower_building_collectible_counter >= turret_cost :
 			Global.use_collectible("tower building", turret_cost)
 			var instantiated_turret = turret.instantiate()
 			instantiated_turret.global_position = global_position
