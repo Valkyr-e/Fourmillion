@@ -1,16 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://6y7hdvnygqeu"]
+[gd_scene load_steps=16 format=3 uid="uid://sa7f5d2ia1b0"]
 
-[ext_resource type="Script" path="res://Entities and Weapons/Enemies/Enemy.gd" id="1_0j30v"]
-[ext_resource type="Texture2D" uid="uid://dkj8pp35d74lo" path="res://Entities and Weapons/Enemies/assets/enemi_basique-Sheet.png" id="2_6xyhe"]
-[ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities and Weapons/Components/Hitbox Component/hitbox_component.tscn" id="3_u33s3"]
-[ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities and Weapons/Components/Health Component/health_component.tscn" id="4_7fsdd"]
-[ext_resource type="Script" path="res://Entities and Weapons/StateMachine/StateMachine.gd" id="5_ixoc8"]
-[ext_resource type="Script" path="res://Entities and Weapons/Components/Attack Component/AttackComponent.gd" id="5_mn645"]
-[ext_resource type="PackedScene" uid="uid://c5jtjc3i381lj" path="res://Entities and Weapons/StateMachine/navigation_component.tscn" id="6_7rf1t"]
-[ext_resource type="Script" path="res://Entities and Weapons/StateMachine/Idle.gd" id="6_js5m2"]
-[ext_resource type="Script" path="res://Entities and Weapons/StateMachine/FollowEntity.gd" id="7_5wy6a"]
-[ext_resource type="Script" path="res://Entities and Weapons/StateMachine/BeeingPushedFromPoint.gd" id="9_2dxgs"]
-[ext_resource type="Script" path="res://Z NE PAS OUVRIR ( PORN )/Debug/label_debug_charge.gd" id="10_clker"]
+[ext_resource type="Script" path="res://Entities and Weapons/Enemies/Enemy.gd" id="1_4s304"]
+[ext_resource type="Texture2D" uid="uid://dkj8pp35d74lo" path="res://Entities and Weapons/Enemies/assets/enemi_basique-Sheet.png" id="2_j6yty"]
+[ext_resource type="PackedScene" uid="uid://bnpwqmpl41w12" path="res://Entities and Weapons/Components/Hitbox Component/hitbox_component.tscn" id="3_iwqc5"]
+[ext_resource type="PackedScene" uid="uid://bpx7kfuma3nst" path="res://Entities and Weapons/Components/Health Component/health_component.tscn" id="4_7xe6e"]
+[ext_resource type="Script" path="res://Entities and Weapons/Components/Attack Component/AttackComponent.gd" id="5_s4do6"]
+[ext_resource type="Script" path="res://Entities and Weapons/StateMachine/StateMachine.gd" id="6_765gx"]
+[ext_resource type="Script" path="res://Entities and Weapons/StateMachine/Idle.gd" id="7_wg13l"]
+[ext_resource type="Script" path="res://Entities and Weapons/StateMachine/FollowEntity.gd" id="8_jcucj"]
+[ext_resource type="PackedScene" uid="uid://c5jtjc3i381lj" path="res://Entities and Weapons/StateMachine/navigation_component.tscn" id="9_1s08a"]
+[ext_resource type="Script" path="res://Entities and Weapons/StateMachine/BeeingPushedFromPoint.gd" id="10_yyqcn"]
+[ext_resource type="Script" path="res://Z NE PAS OUVRIR ( PORN )/Debug/label_debug_charge.gd" id="11_fsusw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qfd7"]
 radius = 11.4018
@@ -46,17 +46,17 @@ process_mode = 1
 collision_layer = 2
 collision_mask = 15
 motion_mode = 1
-script = ExtResource("1_0j30v")
+script = ExtResource("1_4s304")
 SPEED = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_6xyhe")
+texture = ExtResource("2_j6yty")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8qfd7")
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("3_u33s3")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("3_iwqc5")]
 collision_layer = 32
 collision_mask = 16
 health_component = NodePath("../HealthComponent")
@@ -66,31 +66,30 @@ attack_component = NodePath("../AttackComponent")
 modulate = Color(1, 0.360784, 0.2, 1)
 shape = SubResource("CircleShape2D_nfp1p")
 
-[node name="HealthComponent" parent="." instance=ExtResource("4_7fsdd")]
+[node name="HealthComponent" parent="." instance=ExtResource("4_7xe6e")]
 MAX_HEALTH = 200
 
 [node name="AttackComponent" type="Node" parent="."]
-script = ExtResource("5_mn645")
+script = ExtResource("5_s4do6")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("moving_entity", "initial_state", "default_state")]
-script = ExtResource("5_ixoc8")
+script = ExtResource("6_765gx")
 moving_entity = NodePath("..")
-initial_state = NodePath("IdleState")
-default_state = NodePath("IdleState")
+initial_state = NodePath("FollowEntity")
+default_state = NodePath("FollowEntity")
 
 [node name="IdleState" type="Node2D" parent="StateMachine"]
-script = ExtResource("6_js5m2")
+script = ExtResource("7_wg13l")
 
 [node name="FollowEntity" type="Node2D" parent="StateMachine"]
-script = ExtResource("7_5wy6a")
+script = ExtResource("8_jcucj")
 aggro_distance = 200.0
 stop_aggro_distance = 300.0
-following_limitless = false
 
-[node name="NavigationComponent" parent="StateMachine/FollowEntity" instance=ExtResource("6_7rf1t")]
+[node name="NavigationComponent" parent="StateMachine/FollowEntity" instance=ExtResource("9_1s08a")]
 
 [node name="BeeingPushedFromPoint" type="Node2D" parent="StateMachine"]
-script = ExtResource("9_2dxgs")
+script = ExtResource("10_yyqcn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -103,6 +102,6 @@ offset_left = -27.0
 offset_top = 12.0
 offset_right = 27.0
 offset_bottom = 35.0
-script = ExtResource("10_clker")
+script = ExtResource("11_fsusw")
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

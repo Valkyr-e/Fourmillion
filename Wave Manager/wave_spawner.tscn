@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7e74xrgx7ym5"]
+
+[ext_resource type="Texture2D" uid="uid://b6qgihu3bhakf" path="res://Z NE PAS OUVRIR ( PORN )/Levels/Assets/tilemap_prototype.png" id="1_qkr8d"]
+
+[node name="WaveSpawner" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qkr8d")
+hframes = 4
+vframes = 2
+frame = 7

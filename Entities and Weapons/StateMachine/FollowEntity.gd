@@ -17,9 +17,10 @@ static var need_to_actualize_follow_distance : bool = false
 @export var stop_aggro_distance : float = 500
 @export var aggro_distance_sneak: float = 50
 @export var stop_aggro_distance_sneak : float = 100
+@export var following_limitless : bool = true
 
-
-
+func set_target(new_target):
+	target = new_target
 func _ready():
 	initialize_navigation()
 	current_aggro_distance = aggro_distance_sneak
@@ -90,15 +91,17 @@ func _on_recalculate_navigation_timeout():
 
 
 func _on_aggro_body_entered(body):
-	if body.get_collision_layer_value(layer_to_follow)   and ! target:	
-		target = body
-		transitioned.emit("FollowEntity")
+	if !following_limitless:
+		if body.get_collision_layer_value(layer_to_follow)   and ! target:	
+			target = body
+			transitioned.emit("FollowEntity")
 
 
 func _on_stop_aggro_body_exited(body):
-	if body ==  target:
-		target = null
-		transitioned.emit("")
+	if !following_limitless:
+		if body ==  target:
+			target = null
+			transitioned.emit("")
 
 func is_retrievable():
 	return (target is CharacterBody2D)

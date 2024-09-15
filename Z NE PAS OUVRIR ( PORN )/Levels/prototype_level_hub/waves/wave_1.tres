@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WaveRessource" load_steps=7 format=3 uid="uid://drlahpcjs3qay"]
+
+[ext_resource type="Script" path="res://Wave Manager/WaveEvent.gd" id="1_xn0xg"]
+[ext_resource type="Script" path="res://Wave Manager/WaveRessource.gd" id="2_rhjik"]
+[ext_resource type="PackedScene" uid="uid://sa7f5d2ia1b0" path="res://Entities and Weapons/Enemies/Wave Enemies/enemy_follow_wave.tscn" id="2_tvulb"]
+[ext_resource type="PackedScene" uid="uid://cnb4m5mcwbt5r" path="res://Entities and Weapons/Enemies/Wave Enemies/enemy_charge_wave.tscn" id="3_h33jx"]
+
+[sub_resource type="Resource" id="Resource_2opsh"]
+script = ExtResource("1_xn0xg")
+enemy = ExtResource("2_tvulb")
+begin = 0.0
+end = 60.0
+number = 20
+
+[sub_resource type="Resource" id="Resource_6iio6"]
+script = ExtResource("1_xn0xg")
+enemy = ExtResource("3_h33jx")
+begin = 0.0
+end = 60.0
+number = 5
+
+[resource]
+script = ExtResource("2_rhjik")
+duration = 60.0
+event_list = Array[ExtResource("1_xn0xg")]([SubResource("Resource_2opsh"), SubResource("Resource_6iio6")])

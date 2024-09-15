@@ -8,7 +8,7 @@ func _ready():
 	turret_cost = 1
 
 
-func _input(event): #fait apparaître une tourelle
+func _input(_event): #fait apparaître une tourelle
 	if Input.is_action_just_pressed("interact") and player_is_in:
 		if Global.tower_building_collectible_counter >= turret_cost :
 			Global.use_collectible("tower building", turret_cost)

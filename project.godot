@@ -23,8 +23,8 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 
 [display]
 
-window/size/viewport_width=608
-window/size/viewport_height=328
+window/size/viewport_width=1000
+window/size/viewport_height=600
 window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
 

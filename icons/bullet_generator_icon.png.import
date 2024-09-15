@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2mtmn61gtgof"
-path="res://.godot/imported/bullet_generator_icon.png-89beb1b27f44210bdff20d338f6dcffe.ctex"
+path="res://.godot/imported/bullet_generator_icon.png-f819e7b50484bdc419044097d5d18e23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/bullet_generator_icon.png"
-dest_files=["res://.godot/imported/bullet_generator_icon.png-89beb1b27f44210bdff20d338f6dcffe.ctex"]
+source_file="res://Icons/bullet_generator_icon.png"
+dest_files=["res://.godot/imported/bullet_generator_icon.png-f819e7b50484bdc419044097d5d18e23.ctex"]
 
 [params]
 

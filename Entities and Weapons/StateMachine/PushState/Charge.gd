@@ -21,6 +21,7 @@ enum ChargePhase {BEFORE , CHARGE , AFTER}
 @export var time_after_charge : float = 1.0
 @export var max_distance_to_charge : float = 500.0
 
+
 func _ready():
 	attack_component = AttackComponent.new()
 	print("attack_component " , attack_component )
@@ -37,9 +38,13 @@ func _ready():
 	
 # Called when the node enters the scene tree for the first time.
 func enter():
+	print("dans enter, target : ", target.name)
 	var direction_to_target = target.global_position-moving_entity.global_position
 	var distance_to_targer = direction_to_target.length()
-	if distance_to_targer < max_distance_to_charge:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(moving_entity.global_position, target.global_position,8, [self])
+	var result = space_state.intersect_ray(query)
+	if distance_to_targer < max_distance_to_charge and result == {}:
 		timer.set_wait_time(time_before_charge)
 		timer.start()
 		charge_duration = max_distance_to_charge/charging_speed
@@ -50,7 +55,7 @@ func enter():
 		charge_target_position = global_position + charge_velocity*charge_duration
 	else :
 		transitioned.emit("")
-	state_active_debug = true 
+	
 	
 	
 func _on_timeout():
@@ -64,6 +69,7 @@ func _on_timeout():
 		timer.wait_time = time_after_charge
 		timer.start()
 	elif current_phase == ChargePhase.BEFORE:
+		# state_active_debug = true  #remettre pour voir le trait de la charge
 		moving_entity.get_node("AnimationPlayer").play("charge")
 		current_phase = ChargePhase.CHARGE
 		timer.wait_time = charge_duration

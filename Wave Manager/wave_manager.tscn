@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://fa0tqiucbuoh"]
+
+[ext_resource type="Script" path="res://Wave Manager/wave_manager.gd" id="1_q5u48"]
+[ext_resource type="Script" path="res://Wave Manager/WaveRessource.gd" id="2_jbpop"]
+[ext_resource type="Resource" uid="uid://drlahpcjs3qay" path="res://Z NE PAS OUVRIR ( PORN )/Levels/prototype_level_hub/waves/wave_1.tres" id="3_x4x4h"]
+[ext_resource type="Resource" uid="uid://c4pxom57djexf" path="res://Z NE PAS OUVRIR ( PORN )/Levels/prototype_level_hub/waves/wave_2.tres" id="4_kth25"]
+
+[node name="Wave Manager" type="Node2D"]
+script = ExtResource("1_q5u48")
+waves = Array[ExtResource("2_jbpop")]([ExtResource("3_x4x4h"), ExtResource("4_kth25")])
+
+[node name="Pause_Timer" type="Timer" parent="."]
+
+[node name="Wave_Timer" type="Timer" parent="."]
