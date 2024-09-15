@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgojw74kmiasr"]
+
+[ext_resource type="Texture2D" uid="uid://bkl4okaof3p1g" path="res://Entities and Weapons/Collectibles/Collectible sprite #1.png" id="1_403io"]
+[ext_resource type="Script" path="res://Entities and Weapons/Collectibles/collectible.gd" id="1_i15ol"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8n4hy"]
+radius = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lf18s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_403io")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Collectible" type="Area2D"]
+position = Vector2(280, 120)
+script = ExtResource("1_i15ol")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8n4hy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lf18s")
+
+[connection signal="body_entered" from="." to="." method="_on_picked_up"]

@@ -2,18 +2,21 @@ extends Node2D
 class_name TurretHost
 var player_is_in : bool = false
 @export var turret : PackedScene
-# Called when the node enters the scene tree for the first time.
+var turret_cost : int 
+
 func _ready():
-	pass # Replace with function body.
+	turret_cost = 1
 
 
-func _input(event):
+func _input(event): #fait apparaître une tourelle
 	if Input.is_action_just_pressed("interact") and player_is_in:
-		var instantiated_turret = turret.instantiate()
-		instantiated_turret.global_position = global_position
-		get_tree().get_root().add_child(instantiated_turret)
-		await on_turret_host_activated()
-		queue_free()
+		if Global.tower_building_collectible_counter >= turret_cost :
+			Global.use_collectible("tower building", turret_cost)
+			var instantiated_turret = turret.instantiate()
+			instantiated_turret.global_position = global_position
+			get_tree().get_root().add_child(instantiated_turret)
+			await on_turret_host_activated()
+			queue_free()
 		
 func on_turret_host_activated():
 	$Label.hide()
